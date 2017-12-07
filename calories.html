@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt" class="js  " style="height: 100%">
+	<head>
+		<title>
+			Calculadora de Calorias
+		</title>
+		<meta name="decription" content=" Uma calculardora simples para estimar quantos calorias necessarios por dia com orientação simples para o seu ganho ou perder peso plano " charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="/cal/style3c.css">
+		<style type="text/css">
+			
+			.displayNone { display:none; }
+			.displayBlock { display:block !important; }
+			#advanced { background-color: #FFFFFF; border: 1px solid #DEDEDE; display: none; font-size: 0.8125em; margin-left: auto; margin-right: auto; max-width: 350px; padding: 2%; }
+			.tooltable td { border-width:0; }
+			#zigResultsTable td { padding: 0px 4px 0px 4px; border:1px solid #d9d9d9; border-right:0; border-left:0; }
+			#zigResultsTable { width:100%; }
+			.small { font-size:13px; }
+			table.formulas .small { font-size:12px; }
+			#nowwhat { min-width:75%; text-shadow: 0 1px 0 #fff; background: #d6d6d6; background: rgba(0, 0, 0, 0.06); border-radius: 3px; padding: 6px 12px; }
+
+		</style>
+		<script type="text/javascript">
+			if ('querySelector' in document && 'addEventListener' in window) {
+				document.documentElement.className += 'js';
+			}
+		</script>
+		<script type="text/javascript">
+					
+			/* Javascript code copyright Freedieting 2014
+			Do not copy or reuse */
+			function init() {
+				get("age").focus();
+				oForm = document.calc;
+				if (oForm.height[0].checked) { 
+				   showFeet(); }
+				   else 
+				   {
+					   showCM();
+				}
+			}
+
+			document.addEventListener('DOMContentLoaded', init, false);
+
+
+			function showFeet() {
+				
+				var divblock = document.getElementById("feetlabel");
+				divblock.style.display = "block";
+				var cmblock = document.getElementById("cmlabel");
+				cmblock.style.display = "none";
+			}
+
+			function showCM() {
+				
+				var divblock = document.getElementById("feetlabel");
+				divblock.style.display = "none";
+				var cmblock = document.getElementById("cmlabel");
+				cmblock.style.display = "block";
+			}
+
+			function toggleMe(trigger, div) {
+			  toggleClass(document.getElementById(div),"displayBlock");
+			}
+
+
+		</script>
+	</head>
+	<body style="position: relative; min-height: 100%; top: 0px;">
+		<header>
+			<div class="contents">
+				<div id="branding">
+					<h1 id="calc">Calculadora de Caloria</h1>
+				</div>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="Diario.html">Diario do corpo</a></li>
+						<li><a href="aboutUs.html">About Us</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<section id="contentout">
+			<div class="container">
+					<p>
+						A <i>Calculadora de Caloria</i> pode ser usado para calcular a quantidade de calorias necessaria a cade dia
+					</p>
+			</div>
+		</section>
+		<section class="container">
+			
+			<div class="row space-top content">
+				
+				
+				<span id="ucframe"></span>
+				<div class="col-12 col-sm-9 col-lg-7">
+					<div class="group">
+					</div>
+					<div class="tooltable">
+						<form name="calc" class="no-space-bottom">
+							<h2>DAILY CALORIC INTAKE CALCULATOR</h2>
+						<table>
+						<tr>
+						<td>
+						<div class="left-block">
+							<div class="label-align">
+								<label>Idade</label>
+								<span id="ageerror">
+									<span class="tip">
+										::after
+									</span>
+									<input type="number" name="age" id="age" autocorrect="off">
+									<label class="inline">Anos</label>
+								</span>
+							</div>
+							<div class="label-align">
+								<label>Genero</label>
+								<input type="radio" name="sex" id="sexFem" value="F" checked>
+								<label for="sexFem" class="inline">Feminina</label>
+								<input type="radio" name="sex" id="sexMale" value="M">
+								<label for="sexMale" class="inline">Masculino</label>				
+							</div>
+							<div class="label-align">
+								<label>Peso</label>
+								<span id="weighterror">
+									<span class="tip">
+										::after
+									</span>
+									<input type="number" name="weight" id="weight" autocorrect = "off">
+								</span>
+								<input type="radio" name="weighttype" class="rad" id="weighttype1" value="P" checked>
+								<label for="weighttype1" class="inline">Pounds</label>
+								<input type="radio" name="weighttype" class="rad" id="weighttype2" value="K">
+								<label for="weighttype2" class="inline">Kilos</label>				
+							</div>
+							<div class="label-align">
+								<label>Altura</label>
+								<input type="radio" name="height" class="rad" id="heighfeet" value="F" checked onclick="showFeet()">
+								<label class="inline" for="heighfeet" >Feet & Inches</label>
+								<input type="radio" name="height" class="rad" id="heightCM" value="C" onclick="showCM();">
+								<label class="inline" for="heightCM">CMs</label>
+								<div id="feetlabel" style="display: block;">
+									<label>Feet</label>
+									<span id="feeterror">
+										<span class="tip">
+											::after
+										</span>
+										<input type="number" name="feet" id="feet" autocorrect="off">
+									</span>
+									<label class="inline">Inches</label>
+									<span id="incheserror">
+										<span class="tip">
+											::after
+										</span>
+										<input type="number" name="inches" id="inches" autocorrect="off">
+									</span>
+								</div>
+								<div id="cmlabel" style="display: none;">
+									<label>CM</label>
+									<span id="cmerror">
+										<span class="tip">
+											::after
+										</span>
+										<input type="number" name="cm" id="cm"
+										autocorrect="off">
+									</span>
+								</div>
+							</div>
+							<div class="label-align">
+								<label>Exercicio Físico</label>
+								<select name="activity" id="activity">
+									<option value="1.0">Taxa metabólica basal</option>
+									<option value="1.2">Pouco/nenhum Exercicio</option>
+									<option selected="true" value="1.375">3 vezes/semana</option>
+									<option value="1.4187">4 vezes/semana</option>
+									<option value="1.4625">5 vezes/semana</option>
+									<option value="1.550">Diariamente</option>
+									<option value="1.6375">5 vezes/semana (Intenso)</option>
+									<option value="1.725">Diariamente (intenso) ou duas vezes por dia</option>
+									<option value="1.9">Exercício diario + trabalho físico</option>
+								</select>
+								
+							</div>
+						</div>
+						</td>
+						<td>
+						<div class="right-block">
+							<div class="label-align">
+								<label>Dormindo</label>
+								
+								<select name="activity" id="activity" >
+									<option value="360">Igual/menos que 6 Horas</option>
+									<option value="420">7 Horas</option>
+									<option selected="true" value="480">8 Horas</option>
+									<option value="540">9 Horas</option>
+									<option value="600">Igual/mais que 10 Horas</option>
+								</select>
+							</div>
+
+							<div class="label-align">
+								<label>Jogando futebol/Basquete/Volei</label>
+								
+								<select name="activity" id="activity" >
+									<option selected="true" value="0">Nenhum</option>
+									<option value="580">1 Hora</option>
+									<option value="1160">2 Horas</option>
+									<option value="1740">3 Horas</option>
+									<option value="2320">Igual/mais que 4 Horas</option>
+								</select>
+							</div>
+
+							<div class="label-align">
+								<label>Estudar</label>
+								
+								<select name="activity" id="activity" >
+									<option selected="true" value="0">Nenhum</option>
+									<option value="120">1 Hora</option>
+									<option  value="240">2 Horas</option>
+									<option value="360">3 Horas</option>
+									<option value="480">Igual/mais que 4 Horas</option>
+								</select>
+							</div>
+							</div>
+							</td>
+
+						</tr>
+						</table>
+							<div class="space-top-large">
+							<input type="submit" name="Button1" id="Button1" class="btn btn-large btn-blue float-center text-tall" value="Calcular" onclick="calcalIt();cancelDefaultAction(event);">
+							</div>
+							<div id="printArea" style="display: block;">
+								<div id="printAreainset">
+									<h2 id="results">RESULTADOS</h2>
+									<div class="tooltable float-center" style="min-width: 80%; padding-right: 0; padding-left: 0;">
+										<p>
+											<label class="text-center">CALORIAS TOTAL</label>
+										</p>
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tbody>
+												<tr>
+													<td align="right" class="tooltable-cell-width">
+														<label class="biglabel">
+															Maintenance
+														</label>
+														
+													</td>
+													<td align="left" class="tooltable-cell-width">
+														<div class="calwrap">
+															<span id="answer">2311</span>
+															<span id="call" class="cal">CALORIAS/DIA</span>
+															
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										
+									</div>
+								</div>
+								
+							</div>	
+						</form>
+						
+					</div>
+					</div>
+				</div>
+				</div>
+			<footer>
+				<p>Ltc/Nutes, Copyright &copy; 2017</p>
+				<p>(Site ainda está em desenvolvimento)</p>
+			</footer>
+		</section>
+
+	</body>
+</html>
