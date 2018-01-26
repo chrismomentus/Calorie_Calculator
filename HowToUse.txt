@@ -1,0 +1,6 @@
+A free and simple Calorie Calculator that determines your calorie intake 
+and Calorie burns and a potencial high or low Calorie residue in the body.
+
+A web base app written in html,css and Javascript.
+with no database needed or to rephrase no backend ativity involved,
+So enjoy and live a healthy lifestyle
